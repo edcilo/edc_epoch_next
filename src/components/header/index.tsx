@@ -4,13 +4,16 @@ import {
   Flex,
   useMantineColorScheme,
 } from "@mantine/core";
+import { useStyles } from "./styles";
 import { FC } from "react";
 import Image from "next/image";
 import { ColorSchemeControl } from "@/components";
 import Link from "next/link";
 
 export const Header: FC = () => {
+  const { classes } = useStyles();
   const { colorScheme } = useMantineColorScheme();
+
   const linkUrl = "https://edcilo.com";
   const logoSrc =
     colorScheme === "dark"
@@ -18,7 +21,12 @@ export const Header: FC = () => {
       : "https://storage.edcilo.com/edcilo-logo-dark.svg";
 
   return (
-    <HeaderMantine height={60} p="xs" withBorder={false}>
+    <HeaderMantine
+      height={60}
+      p="xs"
+      withBorder={false}
+      className={classes.header}
+    >
       <Container size={400}>
         <Flex align="center" justify="space-between">
           <Link href={linkUrl}>

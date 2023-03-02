@@ -1,14 +1,39 @@
 import Head from "next/head";
-import { Container, Card, SimpleGrid, Title } from "@mantine/core";
+import {
+  Container,
+  Card,
+  Title,
+  Flex,
+  Text,
+  Space,
+  createStyles,
+} from "@mantine/core";
 import { DefaultLayout } from "@/layouts";
-import { CurrentEpoch, EpochToHuman, HumanToEpoch } from "@/components";
+import { CurrentEpoch, EpochToHuman, Background } from "@/components";
 import { getCurrentEpoch } from "@/helpers";
+import { IconClock } from "@tabler/icons-react";
 
 interface HomeProps {
   currentEpoch: number;
 }
 
+export const useStyles = createStyles((theme) => ({
+  header: {
+    marginBottom: theme.spacing.xl,
+    color: theme.colorScheme === "dark" ? theme.colors.gray[0] : theme.white,
+  },
+  subtitle: {
+    textAlign: "center",
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.gray[1]
+        : theme.colors.dark[9],
+  },
+}));
+
 export default function Home({ currentEpoch }: HomeProps) {
+  const { classes } = useStyles();
+
   return (
     <>
       <Head>
@@ -19,25 +44,49 @@ export default function Home({ currentEpoch }: HomeProps) {
       </Head>
 
       <DefaultLayout>
-        <Container size={400}>
-          <SimpleGrid>
+        <Background />
+        <Container
+          size={400}
+          h="100%"
+          style={{ position: "relative", zIndex: 100 }}
+        >
+          <Flex h="100%" direction="column" gap="md" justify="center">
+            <Flex
+              className={classes.header}
+              justify="center"
+              align="center"
+              gap="sm"
+            >
+              <IconClock size={48} />
+              <Title order={1}>Epoch converter</Title>
+            </Flex>
+
             <Card shadow="sm" withBorder>
               <CurrentEpoch epoch={currentEpoch} />
             </Card>
 
             <Card shadow="sm" withBorder>
               <Card.Section p="md">
-                <Title>Epoch to Human</Title>
+                <Title order={3} className={classes.subtitle}>
+                  Epoch to Human
+                </Title>
               </Card.Section>
               <Card.Section p="md" pt={0}>
                 <EpochToHuman epoch={currentEpoch} />
               </Card.Section>
             </Card>
 
-            {/* <Card shadow="sm" withBorder>
-              <HumanToEpoch />
-            </Card> */}
-          </SimpleGrid>
+            <Space h="lg" />
+
+            <Text mb="xl">
+              <strong>Unix epoch</strong> es el número de segundos transcurridos
+              desde el 1 de enero de 1970 a las 00:00:00 UTC. Este valor se
+              utiliza como una forma de referencia para medir el tiempo en
+              sistemas Unix.
+            </Text>
+
+            <Space h={120} />
+          </Flex>
         </Container>
       </DefaultLayout>
     </>

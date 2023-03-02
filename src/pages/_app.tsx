@@ -40,6 +40,7 @@ export default function App(props: IAppProps) {
       toggleColorScheme={toggleColorScheme}
     >
       <MantineProvider
+        withCSSVariables
         withGlobalStyles
         withNormalizeCSS
         theme={{ colorScheme }}

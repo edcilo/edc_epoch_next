@@ -1,14 +1,19 @@
 import { FC } from "react";
-import { Container, Footer as FooterMantine, Flex } from "@mantine/core";
+import { Center, Container, Footer as FooterMantine } from "@mantine/core";
 import Link from "next/link";
+import { useStyles } from "./style";
 
 export const Footer: FC = () => {
+  const { classes } = useStyles();
+
   return (
-    <FooterMantine height={60} withBorder={false}>
+    <FooterMantine className={classes.footer} height={60} withBorder={false}>
       <Container size={400}>
-        <Flex justify="center" align="center">
-          <Link href="https://edcilo.com">edcilo.com</Link>
-        </Flex>
+        <Center h={60}>
+          <Link className={classes.link} href="https://edcilo.com">
+            edcilo.com
+          </Link>
+        </Center>
       </Container>
     </FooterMantine>
   );
