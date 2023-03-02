@@ -1,7 +1,13 @@
 import Head from "next/head";
 import { DefaultLayout } from "@/layouts";
+import { CurrentEpoch } from "@/components";
+import { getCurrentEpoch } from "@/helpers";
 
-export default function Home() {
+interface HomeProps {
+  currentEpoch: number;
+}
+
+export default function Home({ currentEpoch }: HomeProps) {
   return (
     <>
       <Head>
@@ -10,7 +16,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://storage.edcilo.com/favicon.ico" />
       </Head>
-      <DefaultLayout>Hola mundo</DefaultLayout>
+      <DefaultLayout>
+        <CurrentEpoch epoch={currentEpoch} />
+      </DefaultLayout>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  const currentEpoch = getCurrentEpoch();
+  return {
+    props: {
+      currentEpoch,
+    },
+  };
 }
