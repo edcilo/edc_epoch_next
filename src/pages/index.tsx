@@ -1,6 +1,7 @@
 import Head from "next/head";
+import { Container, Card, SimpleGrid, Title } from "@mantine/core";
 import { DefaultLayout } from "@/layouts";
-import { CurrentEpoch } from "@/components";
+import { CurrentEpoch, EpochToHuman, HumanToEpoch } from "@/components";
 import { getCurrentEpoch } from "@/helpers";
 
 interface HomeProps {
@@ -16,8 +17,28 @@ export default function Home({ currentEpoch }: HomeProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="https://storage.edcilo.com/favicon.ico" />
       </Head>
+
       <DefaultLayout>
-        <CurrentEpoch epoch={currentEpoch} />
+        <Container size={400}>
+          <SimpleGrid>
+            <Card shadow="sm" withBorder>
+              <CurrentEpoch epoch={currentEpoch} />
+            </Card>
+
+            <Card shadow="sm" withBorder>
+              <Card.Section p="md">
+                <Title>Epoch to Human</Title>
+              </Card.Section>
+              <Card.Section p="md" pt={0}>
+                <EpochToHuman epoch={currentEpoch} />
+              </Card.Section>
+            </Card>
+
+            {/* <Card shadow="sm" withBorder>
+              <HumanToEpoch />
+            </Card> */}
+          </SimpleGrid>
+        </Container>
       </DefaultLayout>
     </>
   );
