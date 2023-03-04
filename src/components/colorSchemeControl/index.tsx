@@ -17,6 +17,7 @@ export const ColorSchemeControl: FC = () => {
         variant="filled"
         onClick={() => toggleColorScheme()}
         title="Toggle color scheme"
+        aria-label="Toggle color scheme"
       >
         {dark ? <IconSun /> : <IconMoonStars />}
       </ActionIcon>

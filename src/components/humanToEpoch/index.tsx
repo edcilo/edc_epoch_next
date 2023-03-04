@@ -100,6 +100,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
         className={classes.button}
         onClick={() => convertToEpoch(date)}
         fullWidth
+        aria-label="Convert human date to epoch"
       >
         <IconRefresh size={18} /> Convert
       </Button>

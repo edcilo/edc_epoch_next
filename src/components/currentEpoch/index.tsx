@@ -34,6 +34,7 @@ export const CurrentEpoch: FC<ICurrentEpochProps> = ({ epoch }) => {
               variant="transparent"
               color={clipboard.copied ? "green.8" : "gray.7"}
               onClick={() => clipboard.copy(currentEpoch)}
+              aria-label="Copy current epoch to clipboard"
             >
               <IconClipboard size={18} />
             </ActionIcon>

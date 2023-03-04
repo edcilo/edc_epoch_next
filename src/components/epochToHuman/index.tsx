@@ -30,7 +30,11 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
           onChange={(value) => setValue(value || 0)}
         />
         <Tooltip label="Convert">
-          <Button className={classes.button} onClick={convertToDate}>
+          <Button
+            className={classes.button}
+            onClick={convertToDate}
+            aria-label="Convert epoch to human date"
+          >
             <IconRefresh size={18} />
           </Button>
         </Tooltip>
