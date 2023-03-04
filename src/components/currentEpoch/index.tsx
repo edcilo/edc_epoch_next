@@ -24,7 +24,7 @@ export const CurrentEpoch: FC<ICurrentEpochProps> = ({ epoch }) => {
   return (
     <div>
       <TextInput
-        label="Current Unix epoch time is:"
+        label="Current Unix epoch time:"
         styles={styles}
         value={Math.floor(currentEpoch / 1000)}
         readOnly

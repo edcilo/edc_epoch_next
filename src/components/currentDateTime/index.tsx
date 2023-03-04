@@ -20,7 +20,7 @@ export const CurrentDateTime: FC<ICurrentDateTimeProps> = ({ datetime }) => {
   return (
     <div>
       <TextInput
-        label="Current date and time is:"
+        label="Current date and time:"
         styles={styles}
         value={currentDateTime.toLocaleString()}
         readOnly

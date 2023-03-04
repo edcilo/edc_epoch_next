@@ -16,6 +16,6 @@ export function getColors(theme: MantineTheme) {
   return {
     primary: isDark ? primaryDark : primaryLight,
     primaryHover: isDark ? primaryDarkHover : primaryLightHover,
-    background: isDark ? theme.colors.dark[7] : theme.colors.gray[0],
+    background: isDark ? theme.colors.dark[7] : theme.colors.gray[1],
   };
 }

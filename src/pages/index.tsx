@@ -62,6 +62,7 @@ export default function Home({ currentEpoch }: HomeProps) {
               justify="center"
               align="center"
               gap="sm"
+              mt="lg"
             >
               <IconClock size={48} />
               <Title order={1}>Epoch converter</Title>
