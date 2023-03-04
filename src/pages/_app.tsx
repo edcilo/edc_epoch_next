@@ -9,6 +9,7 @@ import { useHotkeys } from "@mantine/hooks";
 import { getCookie, setCookie } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 interface IAppProps extends AppDefaultProps {
   colorScheme: ColorScheme;
@@ -38,11 +39,29 @@ export default function App(props: IAppProps) {
   return (
     <>
       <Head>
-        <meta
-          name="theme-color"
-          content={colorScheme === "dark" ? "#c92a2a" : "#d6336c"}
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+      <NextSeo
+        title="epoch converter"
+        description="epoch converter web application"
+        canonical="https://epoch.edcilo.com"
+        twitter={{
+          cardType: "summary",
+          handle: "@edcilo",
+        }}
+        additionalMetaTags={[
+          {
+            name: "theme-color",
+            content: colorScheme === "dark" ? "#c92a2a" : "#d6336c",
+          },
+        ]}
+        additionalLinkTags={[
+          {
+            rel: "icon",
+            href: "https://storage.edcilo.com/favicon.ico",
+          },
+        ]}
+      />
       <ColorSchemeProvider
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
