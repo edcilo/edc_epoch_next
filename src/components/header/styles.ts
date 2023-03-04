@@ -4,5 +4,6 @@ import { getColors } from "@/helpers";
 export const useStyles = createStyles((theme) => ({
   header: {
     background: getColors(theme).primary,
+    zIndex: 1000,
   },
 }));

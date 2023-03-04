@@ -1,7 +1,9 @@
 import { MantineTheme } from "@mantine/core";
 
-export function getCurrentEpoch(): number {
-  return Math.floor(Date.now() / 1000);
+export function getCurrentEpoch(ms = false): number {
+  const now = Date.now();
+  if (ms) return now;
+  return Math.floor(now);
 }
 
 export function getColors(theme: MantineTheme) {

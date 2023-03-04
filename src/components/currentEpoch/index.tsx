@@ -26,7 +26,7 @@ export const CurrentEpoch: FC<ICurrentEpochProps> = ({ epoch }) => {
       <TextInput
         label="Current Unix epoch time is:"
         styles={styles}
-        value={currentEpoch}
+        value={Math.floor(currentEpoch / 1000)}
         readOnly
         rightSection={
           <Tooltip label={clipboard.copied ? "Copied" : "Copy"}>

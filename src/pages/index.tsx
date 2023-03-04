@@ -9,7 +9,13 @@ import {
   createStyles,
 } from "@mantine/core";
 import { DefaultLayout } from "@/layouts";
-import { CurrentEpoch, EpochToHuman, Background } from "@/components";
+import {
+  CurrentEpoch,
+  CurrentDateTime,
+  EpochToHuman,
+  Background,
+  HumanToEpoch,
+} from "@/components";
 import { getCurrentEpoch } from "@/helpers";
 import { IconClock } from "@tabler/icons-react";
 
@@ -63,6 +69,8 @@ export default function Home({ currentEpoch }: HomeProps) {
 
             <Card shadow="sm" withBorder>
               <CurrentEpoch epoch={currentEpoch} />
+              <Space h="md" />
+              <CurrentDateTime datetime={new Date(currentEpoch)} />
             </Card>
 
             <Card shadow="sm" withBorder>
@@ -76,16 +84,24 @@ export default function Home({ currentEpoch }: HomeProps) {
               </Card.Section>
             </Card>
 
+            <Card shadow="sm" withBorder>
+              <Card.Section p="md">
+                <Title order={3} className={classes.subtitle}>
+                  Human to Epoch
+                </Title>
+              </Card.Section>
+              <Card.Section p="md" pt={0}>
+                <HumanToEpoch />
+              </Card.Section>
+            </Card>
+
             <Space h="lg" />
 
             <Text mb="xl">
-              <strong>Unix epoch</strong> es el número de segundos transcurridos
-              desde el 1 de enero de 1970 a las 00:00:00 UTC. Este valor se
-              utiliza como una forma de referencia para medir el tiempo en
-              sistemas Unix.
+              The <strong>Unix epoch</strong> is the number of seconds that have
+              elapsed since January 1st, 1970 at 00:00:00 UTC. This value is
+              used as a reference point for measuring time in Unix systems.
             </Text>
-
-            <Space h={120} />
           </Flex>
         </Container>
       </DefaultLayout>
