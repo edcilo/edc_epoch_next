@@ -8,6 +8,7 @@ import {
 import { useHotkeys } from "@mantine/hooks";
 import { getCookie, setCookie } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
+import Head from "next/head";
 
 interface IAppProps extends AppDefaultProps {
   colorScheme: ColorScheme;
@@ -35,19 +36,27 @@ export default function App(props: IAppProps) {
   useHotkeys([["mod+J", () => toggleColorScheme()]]);
 
   return (
-    <ColorSchemeProvider
-      colorScheme={colorScheme}
-      toggleColorScheme={toggleColorScheme}
-    >
-      <MantineProvider
-        withCSSVariables
-        withGlobalStyles
-        withNormalizeCSS
-        theme={{ colorScheme }}
+    <>
+      <Head>
+        <meta
+          name="theme-color"
+          content={colorScheme === "dark" ? "#c92a2a" : "#d6336c"}
+        />
+      </Head>
+      <ColorSchemeProvider
+        colorScheme={colorScheme}
+        toggleColorScheme={toggleColorScheme}
       >
-        <Component {...pageProps} />
-      </MantineProvider>
-    </ColorSchemeProvider>
+        <MantineProvider
+          withCSSVariables
+          withGlobalStyles
+          withNormalizeCSS
+          theme={{ colorScheme }}
+        >
+          <Component {...pageProps} />
+        </MantineProvider>
+      </ColorSchemeProvider>
+    </>
   );
 }
 
