@@ -91,7 +91,7 @@ export default function Home({ currentEpoch }: HomeProps) {
                 </Title>
               </Card.Section>
               <Card.Section p="md" pt={0}>
-                <HumanToEpoch />
+                <HumanToEpoch epoch={currentEpoch} />
               </Card.Section>
             </Card>
 

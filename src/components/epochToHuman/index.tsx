@@ -1,12 +1,5 @@
 import { FC, useState } from "react";
-import {
-  Button,
-  Flex,
-  Checkbox,
-  NumberInput,
-  Tooltip,
-  Text,
-} from "@mantine/core";
+import { Button, Flex, Checkbox, NumberInput, Tooltip } from "@mantine/core";
 import { IconRefresh } from "@tabler/icons-react";
 import { checkboxStyles, inputStyles, useStyles } from "./styles";
 
@@ -16,10 +9,10 @@ interface IEpochToHuman {
 
 export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
   const { classes } = useStyles();
-  const [value, setValue] = useState<number>(epoch);
+  const [value, setValue] = useState<number>(Math.floor(epoch / 1000));
   const [inMmilliseconds, setMilliseconds] = useState<boolean>(false);
 
-  const convertEpoch = () => {
+  const convertToDate = () => {
     const epoch = inMmilliseconds ? value : value * 1000;
     return new Date(epoch);
   };
@@ -37,7 +30,7 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
           onChange={(value) => setValue(value || 0)}
         />
         <Tooltip label="Convert">
-          <Button className={classes.button} onClick={convertEpoch}>
+          <Button className={classes.button} onClick={convertToDate}>
             <IconRefresh size={18} />
           </Button>
         </Tooltip>
@@ -52,12 +45,12 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
 
       <p>
         <strong>GMT: </strong>
-        {convertEpoch().toUTCString()}
+        {convertToDate().toUTCString()}
       </p>
 
       <p>
         <strong>Local: </strong>
-        {convertEpoch().toString()}
+        {convertToDate().toString()}
       </p>
     </div>
   );

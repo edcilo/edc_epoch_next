@@ -22,18 +22,3 @@ export const inputStyles = (theme: MantineTheme) => ({
     },
   },
 });
-
-export const checkboxStyles = (theme: MantineTheme) => ({
-  input: {
-    borderRadius: theme.radius.xs,
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.gray[0] : theme.colors.white,
-    color: theme.black,
-    "&:focus": {
-      borderColor: getColors(theme).primary,
-    },
-    "&:checked": {
-      backgroundColor: getColors(theme).primary,
-    },
-  },
-});
