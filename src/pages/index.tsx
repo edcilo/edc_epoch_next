@@ -29,6 +29,7 @@ export const useStyles = createStyles((theme) => ({
     color: theme.colorScheme === "dark" ? theme.colors.gray[0] : theme.white,
   },
   subtitle: {
+    fontSize: theme.fontSizes.lg,
     textAlign: "center",
     color:
       theme.colorScheme === "dark"
@@ -76,7 +77,7 @@ export default function Home({ currentEpoch }: HomeProps) {
 
             <Card shadow="sm" withBorder>
               <Card.Section p="md">
-                <Title order={3} className={classes.subtitle}>
+                <Title order={1} className={classes.subtitle}>
                   Epoch to Human
                 </Title>
               </Card.Section>
@@ -87,7 +88,7 @@ export default function Home({ currentEpoch }: HomeProps) {
 
             <Card shadow="sm" withBorder>
               <Card.Section p="md">
-                <Title order={3} className={classes.subtitle}>
+                <Title order={1} className={classes.subtitle}>
                   Human to Epoch
                 </Title>
               </Card.Section>
