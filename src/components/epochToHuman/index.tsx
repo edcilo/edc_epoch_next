@@ -56,16 +56,29 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
         <strong>
           <I18n t="epochToHuman.gmt" />:{" "}
         </strong>
-        {/* TODO: translate */}
-        {convertToDate().toUTCString()}
+        {convertToDate().toLocaleString(locale, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          second: "numeric",
+          timeZone: "UTC",
+        })}
       </p>
 
       <p>
         <strong>
           <I18n t="epochToHuman.local" />:{" "}
         </strong>
-        {/* TODO: translate */}
-        {convertToDate().toString()}
+        {convertToDate().toLocaleString(locale, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          second: "numeric",
+        })}
       </p>
     </div>
   );
