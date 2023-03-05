@@ -7,7 +7,7 @@ import {
 import { useStyles } from "./styles";
 import { FC } from "react";
 import Image from "next/image";
-import { ColorSchemeControl } from "@/components";
+import { ColorSchemeControl, LocalControl } from "@/components";
 import Link from "next/link";
 
 export const Header: FC = () => {
@@ -34,7 +34,10 @@ export const Header: FC = () => {
           </Link>
 
           <span>
-            <ColorSchemeControl />
+            <Flex gap="sm" align="center">
+              <LocalControl />
+              <ColorSchemeControl />
+            </Flex>
           </span>
         </Flex>
       </Container>

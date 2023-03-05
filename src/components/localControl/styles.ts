@@ -1,11 +1,8 @@
 import { createStyles } from "@mantine/core";
 
 export const useStyles = createStyles((theme) => ({
-  icon: {
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.yellow[5]
-        : theme.colors.violet[2],
+  trigger: {
+    color: theme.colors.white,
     borderRadius: theme.radius.xs,
     background:
       theme.colorScheme === "dark" ? theme.colors.red[8] : theme.colors.pink[8],

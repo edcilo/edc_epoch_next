@@ -6,3 +6,4 @@ export * from "./humanToEpoch";
 export * from "./footer";
 export * from "./background";
 export * from "./currentDateTime";
+export * from "./localControl";
