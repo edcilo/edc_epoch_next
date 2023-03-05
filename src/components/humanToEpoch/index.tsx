@@ -1,13 +1,24 @@
 import { FC, useState } from "react";
-import { Button, Flex, NumberInput, Space } from "@mantine/core";
+import {
+  Button,
+  Flex,
+  NumberInput,
+  Space,
+  TextInput,
+  ActionIcon,
+  Tooltip,
+} from "@mantine/core";
 import { IconRefresh } from "@tabler/icons-react";
 import { inputStyles, useStyles } from "./styles";
 import { IDate, IHumanToEpochProps } from "./types";
 import { I18n } from "@/components/i18n";
 import { i18n } from "@/helpers";
 import { useRouter } from "next/router";
+import { useClipboard } from "@mantine/hooks";
+import { IconClipboard } from "@tabler/icons-react";
 
 export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
+  const clipboard = useClipboard({ timeout: 500 });
   const router = useRouter();
   const locale = router.locale || "en";
   const { classes } = useStyles();
@@ -112,11 +123,29 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
 
       <Space h="md" />
 
-      <p>
-        <strong>Epoch: </strong>
-        {/* TODO: add to clipboard */}
-        {newEpoch}
-      </p>
+      <TextInput
+        label={<strong>Epoch:</strong>}
+        value={newEpoch}
+        readOnly
+        rightSection={
+          <Tooltip
+            label={
+              clipboard.copied
+                ? i18n("currentEpoch.copied", locale)
+                : i18n("currentEpoch.copy", locale)
+            }
+          >
+            <ActionIcon
+              variant="transparent"
+              color={clipboard.copied ? "green.8" : "gray.7"}
+              onClick={() => clipboard.copy(newEpoch)}
+              aria-label={i18n("currentEpoch.clipboard", locale)}
+            >
+              <IconClipboard size={18} />
+            </ActionIcon>
+          </Tooltip>
+        }
+      />
     </div>
   );
 };
