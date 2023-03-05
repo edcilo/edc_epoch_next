@@ -1,4 +1,5 @@
 import { MantineTheme } from "@mantine/core";
+import i18nDict from "./dict";
 
 export function getCurrentEpoch(ms = false): number {
   const now = Date.now();
@@ -19,3 +20,17 @@ export function getColors(theme: MantineTheme) {
     background: isDark ? theme.colors.dark[7] : theme.colors.gray[1],
   };
 }
+
+const capitalizeFn = (str: string) =>
+  str.charAt(0).toUpperCase() + str.slice(1);
+
+export const i18n = (t: string, locale: string, capitalize = false) => {
+  i18nDict.locale(locale);
+  let text = i18nDict.t(t);
+
+  if (capitalize) {
+    text = capitalizeFn(text);
+  }
+
+  return text;
+};

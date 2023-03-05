@@ -15,6 +15,7 @@ import {
   EpochToHuman,
   Background,
   HumanToEpoch,
+  I18n,
 } from "@/components";
 import { getCurrentEpoch } from "@/helpers";
 import { IconClock } from "@tabler/icons-react";
@@ -59,7 +60,9 @@ export default function Home({ currentEpoch }: HomeProps) {
               mt="lg"
             >
               <IconClock size={48} />
-              <Title order={1}>Epoch converter</Title>
+              <Title order={1}>
+                <I18n t="home.title" />
+              </Title>
             </Flex>
 
             <Card shadow="sm" withBorder>
@@ -71,7 +74,7 @@ export default function Home({ currentEpoch }: HomeProps) {
             <Card shadow="sm" withBorder>
               <Card.Section p="md">
                 <Title order={1} className={classes.subtitle}>
-                  Epoch to Human
+                  <I18n t="home.epochToHuman" />
                 </Title>
               </Card.Section>
               <Card.Section p="md" pt={0}>
@@ -82,7 +85,7 @@ export default function Home({ currentEpoch }: HomeProps) {
             <Card shadow="sm" withBorder>
               <Card.Section p="md">
                 <Title order={1} className={classes.subtitle}>
-                  Human to Epoch
+                  <I18n t="home.humanToEpoch" />
                 </Title>
               </Card.Section>
               <Card.Section p="md" pt={0}>
@@ -93,9 +96,7 @@ export default function Home({ currentEpoch }: HomeProps) {
             <Space h="lg" />
 
             <Text mb="xl">
-              The <strong>Unix epoch</strong> is the number of seconds that have
-              elapsed since January 1st, 1970 at 00:00:00 UTC. This value is
-              used as a reference point for measuring time in Unix systems.
+              <I18n t="home.description" />
             </Text>
           </Flex>
         </Container>

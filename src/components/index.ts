@@ -7,3 +7,4 @@ export * from "./footer";
 export * from "./background";
 export * from "./currentDateTime";
 export * from "./localControl";
+export * from "./i18n";

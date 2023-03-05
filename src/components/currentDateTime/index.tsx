@@ -1,6 +1,8 @@
 import { FC, useState, useEffect } from "react";
 import { TextInput } from "@mantine/core";
 import { styles } from "./styles";
+import { i18n } from "@/helpers";
+import { useRouter } from "next/router";
 
 interface ICurrentDateTimeProps {
   datetime: Date;
@@ -8,6 +10,7 @@ interface ICurrentDateTimeProps {
 
 export const CurrentDateTime: FC<ICurrentDateTimeProps> = ({ datetime }) => {
   const [currentDateTime, setCurrentDateTime] = useState<Date>(datetime);
+  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -20,7 +23,7 @@ export const CurrentDateTime: FC<ICurrentDateTimeProps> = ({ datetime }) => {
   return (
     <div>
       <TextInput
-        label="Current date and time:"
+        label={i18n("currentDateTime.label", router.locale || "en")}
         styles={styles}
         value={currentDateTime.toLocaleString()}
         readOnly

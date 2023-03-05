@@ -3,8 +3,13 @@ import { Button, Flex, NumberInput, Space } from "@mantine/core";
 import { IconRefresh } from "@tabler/icons-react";
 import { inputStyles, useStyles } from "./styles";
 import { IDate, IHumanToEpochProps } from "./types";
+import { I18n } from "@/components/i18n";
+import { i18n } from "@/helpers";
+import { useRouter } from "next/router";
 
 export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
+  const router = useRouter();
+  const locale = router.locale || "en";
   const { classes } = useStyles();
   const value = new Date(epoch);
   const currentDate = {
@@ -35,8 +40,8 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
     <div>
       <Flex justify="space-between" gap="md" mb="xs">
         <NumberInput
-          label="Year"
-          placeholder="year"
+          label={i18n("humanToEpoch.year.label", locale)}
+          placeholder={i18n("humanToEpoch.year.placeholder", locale)}
           styles={inputStyles}
           min={1970}
           max={9999}
@@ -44,8 +49,8 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           onChange={(value) => setDate({ ...date, year: value || date.year })}
         />
         <NumberInput
-          label="Mon"
-          placeholder="month"
+          label={i18n("humanToEpoch.month.label", locale)}
+          placeholder={i18n("humanToEpoch.month.placeholder", locale)}
           styles={inputStyles}
           min={1}
           max={12}
@@ -53,8 +58,8 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           onChange={(value) => setDate({ ...date, month: value || date.month })}
         />
         <NumberInput
-          label="Day"
-          placeholder="day"
+          label={i18n("humanToEpoch.day.label", locale)}
+          placeholder={i18n("humanToEpoch.day.placeholder", locale)}
           styles={inputStyles}
           min={1}
           max={31}
@@ -64,8 +69,8 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
       </Flex>
       <Flex justify="space-between" gap="md" mb="xs">
         <NumberInput
-          label="Hr"
-          placeholder="hour"
+          label={i18n("humanToEpoch.hour.label", locale)}
+          placeholder={i18n("humanToEpoch.hour.placeholder", locale)}
           styles={inputStyles}
           min={0}
           max={23}
@@ -73,8 +78,8 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           onChange={(value) => setDate({ ...date, hour: value || date.hour })}
         />
         <NumberInput
-          label="Min"
-          placeholder="minute"
+          label={i18n("humanToEpoch.minute.label", locale)}
+          placeholder={i18n("humanToEpoch.minute.placeholder", locale)}
           styles={inputStyles}
           min={0}
           max={59}
@@ -84,8 +89,8 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           }
         />
         <NumberInput
-          label="Sec"
-          placeholder="second"
+          label={i18n("humanToEpoch.second.label", locale)}
+          placeholder={i18n("humanToEpoch.second.placeholder", locale)}
           styles={inputStyles}
           min={0}
           max={59}
@@ -100,15 +105,16 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
         className={classes.button}
         onClick={() => convertToEpoch(date)}
         fullWidth
-        aria-label="Convert human date to epoch"
+        aria-label={i18n("humanToEpoch.button.label", locale)}
       >
-        <IconRefresh size={18} /> Convert
+        <IconRefresh size={18} /> <I18n t="humanToEpoch.button.text" />
       </Button>
 
       <Space h="md" />
 
       <p>
         <strong>Epoch: </strong>
+        {/* TODO: add to clipboard */}
         {newEpoch}
       </p>
     </div>

@@ -3,10 +3,12 @@ import { Menu, ActionIcon } from "@mantine/core";
 import { useRouter } from "next/router";
 import { useStyles } from "./styles";
 import { IconLanguage } from "@tabler/icons-react";
+import { i18n } from "@/helpers";
 
 export const LocalControl: FC = () => {
   const { classes } = useStyles();
   const router = useRouter();
+  const locale = router.locale || "en";
 
   const menuItems = [
     { label: "English", value: "en" },
@@ -23,8 +25,8 @@ export const LocalControl: FC = () => {
         <ActionIcon
           className={classes.trigger}
           variant="filled"
-          title="Change locale"
-          aria-label="Change locale"
+          title={i18n("localeControl.title", locale)}
+          aria-label={i18n("localControl.title", locale)}
         >
           <IconLanguage />
         </ActionIcon>
