@@ -36,6 +36,7 @@ export const CurrentEpoch: FC<ICurrentEpochProps> = ({ epoch }) => {
       <TextInput
         label={i18n("currentEpoch.label", locale)}
         styles={styles}
+        size="md"
         value={Math.floor(currentEpoch / 1000)}
         readOnly
         rightSection={

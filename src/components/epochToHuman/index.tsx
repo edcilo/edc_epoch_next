@@ -54,6 +54,7 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
       <Flex justify="space-between" gap="md" mb="xs">
         <NumberInput
           styles={inputStyles}
+          size="md"
           placeholder={i18n("epochToHuman.placeholder", locale)}
           hideControls
           radius="xs"
@@ -64,6 +65,7 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
         <Tooltip label={i18n("epochToHuman.convert", locale)}>
           <Button
             className={classes.button}
+            size="md"
             onClick={convertToDate}
             aria-label={i18n("epochToHuman.buttonLabel", locale)}
           >
@@ -74,6 +76,7 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
 
       <Checkbox
         styles={checkboxStyles}
+        size="md"
         label={i18n("epochToHuman.milliseconds", locale)}
         checked={inMmilliseconds}
         onChange={(e) => setMilliseconds(e.target.checked)}

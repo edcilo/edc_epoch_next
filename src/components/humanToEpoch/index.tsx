@@ -61,6 +61,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           label={i18n("humanToEpoch.year.label", locale)}
           placeholder={i18n("humanToEpoch.year.placeholder", locale)}
           styles={inputStyles}
+          size="md"
           min={1970}
           max={9999}
           value={date.year}
@@ -70,6 +71,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           label={i18n("humanToEpoch.month.label", locale)}
           placeholder={i18n("humanToEpoch.month.placeholder", locale)}
           styles={inputStyles}
+          size="md"
           min={1}
           max={12}
           value={date.month}
@@ -79,6 +81,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           label={i18n("humanToEpoch.day.label", locale)}
           placeholder={i18n("humanToEpoch.day.placeholder", locale)}
           styles={inputStyles}
+          size="md"
           min={1}
           max={31}
           value={date.day}
@@ -90,6 +93,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           label={i18n("humanToEpoch.hour.label", locale)}
           placeholder={i18n("humanToEpoch.hour.placeholder", locale)}
           styles={inputStyles}
+          size="md"
           min={0}
           max={23}
           value={date.hour}
@@ -101,6 +105,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           label={i18n("humanToEpoch.minute.label", locale)}
           placeholder={i18n("humanToEpoch.minute.placeholder", locale)}
           styles={inputStyles}
+          size="md"
           min={0}
           max={59}
           value={date.minute}
@@ -112,6 +117,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           label={i18n("humanToEpoch.second.label", locale)}
           placeholder={i18n("humanToEpoch.second.placeholder", locale)}
           styles={inputStyles}
+          size="md"
           min={0}
           max={59}
           value={date.second}
@@ -123,6 +129,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
 
       <Button
         className={classes.button}
+        size="md"
         onClick={() => convertToEpoch(date)}
         fullWidth
         aria-label={i18n("humanToEpoch.button.label", locale)}
@@ -136,6 +143,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
         label={<strong>Epoch:</strong>}
         value={newEpoch}
         styles={inputStyles}
+        size="md"
         readOnly
         rightSection={
           <Tooltip

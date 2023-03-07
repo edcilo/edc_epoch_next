@@ -25,6 +25,7 @@ export const CurrentDateTime: FC<ICurrentDateTimeProps> = ({ datetime }) => {
       <TextInput
         label={i18n("currentDateTime.label", router.locale || "en")}
         styles={styles}
+        size="md"
         value={currentDateTime.toLocaleString()}
         readOnly
       />
