@@ -1,4 +1,3 @@
-import Head from "next/head";
 import {
   Container,
   Card,
@@ -19,6 +18,7 @@ import {
 } from "@/components";
 import { getCurrentEpoch } from "@/helpers";
 import { IconClock } from "@tabler/icons-react";
+import Link from "next/link";
 
 interface HomeProps {
   currentEpoch: number;
@@ -96,7 +96,10 @@ export default function Home({ currentEpoch }: HomeProps) {
             <Space h="lg" />
 
             <Text mb="xl">
-              <I18n t="home.description" />
+              <I18n t="home.description" />{" "}
+              <Link href="/epoch">
+                <I18n t="home.readMore" />
+              </Link>
             </Text>
           </Flex>
         </Container>
