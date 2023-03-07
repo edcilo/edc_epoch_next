@@ -16,6 +16,7 @@ import { i18n } from "@/helpers";
 import { useRouter } from "next/router";
 import { useClipboard } from "@mantine/hooks";
 import { IconClipboard } from "@tabler/icons-react";
+import { gaEvent } from "@/services";
 
 export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
   const clipboard = useClipboard({ timeout: 500 });
@@ -35,6 +36,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
   const [newEpoch, setNewEpoch] = useState<number>(Math.floor(epoch / 1000));
 
   const convertToEpoch = (date: IDate) => {
+    gaEvent("human_to_epoch", "click-btn");
     const { year, month, day, hour, minute, second } = date;
     const epoch = new Date(
       year,
@@ -45,6 +47,11 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
       second
     ).getTime();
     setNewEpoch(Math.floor(epoch / 1000));
+  };
+
+  const clipboardEpoch = () => {
+    gaEvent("human_to_epoch", "click-clipboard");
+    clipboard.copy(newEpoch);
   };
 
   return (
@@ -138,7 +145,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
             <ActionIcon
               variant="transparent"
               color={clipboard.copied ? "green.8" : "gray.7"}
-              onClick={() => clipboard.copy(newEpoch)}
+              onClick={clipboardEpoch}
               aria-label={i18n("currentEpoch.clipboard", locale)}
             >
               <IconClipboard size={18} />

@@ -6,6 +6,7 @@ import { IconClipboard } from "@tabler/icons-react";
 import { styles } from "./styles";
 import { i18n } from "@/helpers";
 import { useRouter } from "next/router";
+import { gaEvent } from "@/services";
 
 interface ICurrentEpochProps {
   epoch: number;
@@ -16,6 +17,11 @@ export const CurrentEpoch: FC<ICurrentEpochProps> = ({ epoch }) => {
   const locale = router.locale || "en";
   const clipboard = useClipboard({ timeout: 500 });
   const [currentEpoch, setCurrentEpoch] = useState<number>(epoch);
+
+  const clipboardEpoch = () => {
+    gaEvent("current_epoch", "click-clipboard");
+    clipboard.copy(currentEpoch);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,7 +49,7 @@ export const CurrentEpoch: FC<ICurrentEpochProps> = ({ epoch }) => {
             <ActionIcon
               variant="transparent"
               color={clipboard.copied ? "green.8" : "gray.7"}
-              onClick={() => clipboard.copy(currentEpoch)}
+              onClick={clipboardEpoch}
               aria-label={i18n("currentEpoch.clipboard", locale)}
             >
               <IconClipboard size={18} />

@@ -5,6 +5,7 @@ import { checkboxStyles, inputStyles, useStyles } from "./styles";
 import { I18n } from "@/components/i18n";
 import { i18n } from "@/helpers";
 import { useRouter } from "next/router";
+import { gaEvent } from "@/services";
 
 interface IEpochToHuman {
   epoch: number;
@@ -18,6 +19,7 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
   const [inMmilliseconds, setMilliseconds] = useState<boolean>(false);
 
   const convertToDate = () => {
+    gaEvent("epoch_to_human", "convert-to-date");
     const epoch = inMmilliseconds ? value : value * 1000;
     return new Date(epoch);
   };
