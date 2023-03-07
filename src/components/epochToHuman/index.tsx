@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Button, Flex, Checkbox, NumberInput, Tooltip } from "@mantine/core";
 import { IconRefresh } from "@tabler/icons-react";
 import { checkboxStyles, inputStyles, useStyles } from "./styles";
@@ -16,13 +16,38 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
   const locale = router.locale || "en";
   const { classes } = useStyles();
   const [value, setValue] = useState<number>(Math.floor(epoch / 1000));
+  const [gmt, setGmt] = useState<string>("");
+  const [local, setLocal] = useState<string>("");
   const [inMmilliseconds, setMilliseconds] = useState<boolean>(false);
 
   const convertToDate = () => {
-    gaEvent("epoch_to_human", "convert-to-date");
     const epoch = inMmilliseconds ? value : value * 1000;
     return new Date(epoch);
   };
+
+  useEffect(() => {
+    setGmt(
+      convertToDate().toLocaleString(locale, {
+        timeZone: "GMT",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      })
+    );
+    setLocal(
+      convertToDate().toLocaleString(locale, {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+      })
+    );
+  }, [locale, convertToDate]);
 
   return (
     <div>
@@ -58,29 +83,14 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
         <strong>
           <I18n t="epochToHuman.gmt" />:{" "}
         </strong>
-        {convertToDate().toLocaleString(locale, {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-          second: "numeric",
-          timeZone: "UTC",
-        })}
+        {gmt}
       </p>
 
       <p>
         <strong>
           <I18n t="epochToHuman.local" />:{" "}
         </strong>
-        {convertToDate().toLocaleString(locale, {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-          hour: "numeric",
-          minute: "numeric",
-          second: "numeric",
-        })}
+        {local}
       </p>
     </div>
   );
