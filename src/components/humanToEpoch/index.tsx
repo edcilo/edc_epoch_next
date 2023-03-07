@@ -93,7 +93,9 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           min={0}
           max={23}
           value={date.hour}
-          onChange={(value) => setDate({ ...date, hour: value || date.hour })}
+          onChange={(value) =>
+            setDate({ ...date, hour: value >= 0 ? +value : date.hour })
+          }
         />
         <NumberInput
           label={i18n("humanToEpoch.minute.label", locale)}
@@ -103,7 +105,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           max={59}
           value={date.minute}
           onChange={(value) =>
-            setDate({ ...date, minute: value || date.minute })
+            setDate({ ...date, minute: value >= 0 ? +value : date.minute })
           }
         />
         <NumberInput
@@ -114,7 +116,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           max={59}
           value={date.second}
           onChange={(value) =>
-            setDate({ ...date, second: value || date.second })
+            setDate({ ...date, second: value >= 0 ? +value : date.second })
           }
         />
       </Flex>
