@@ -25,32 +25,32 @@ const poweredBy = [
   {
     name: "TypeScript",
     url: "https://www.typescriptlang.org/",
-    logo: "/assets/typescript.svg",
+    logo: "https://storage.edcilo.com/logos/typescript.svg",
   },
   {
     name: "React",
     url: "https://reactjs.org/",
-    logo: "/assets/react.svg",
+    logo: "https://storage.edcilo.com/logos/react.svg",
   },
   {
     name: "Next.js",
     url: "https://nextjs.org/",
-    logo: "/assets/next-js.svg",
+    logo: "https://storage.edcilo.com/logos/next-js.svg",
   },
   {
     name: "Vercel",
     url: "https://vercel.com/",
-    logo: "/assets/vercel.svg",
+    logo: "https://storage.edcilo.com/logos/vercel.svg",
   },
   {
     name: "Mantine",
     url: "https://mantine.dev/",
-    logo: "/assets/mantine.svg",
+    logo: "https://storage.edcilo.com/logos/mantine.svg",
   },
   {
     name: "Google Analytics",
     url: "https://analytics.google.com/",
-    logo: "/assets/google-analytics.svg",
+    logo: "https://storage.edcilo.com/logos/google-analytics.svg",
   },
 ];
 

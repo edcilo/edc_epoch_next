@@ -11,7 +11,8 @@ export const useStyles = createStyles((theme) => ({
     position: "absolute",
     height: "70vh",
     width: "100vw",
-    background: "url(/assets/mountain.webp) no-repeat center center",
+    background:
+      "url(https://storage.edcilo.com/images/mountain.webp) no-repeat center center",
   },
   backgroundColor: {
     position: "absolute",

@@ -6,6 +6,9 @@ const nextConfig = {
     defaultLocale: "en",
     localeDetection: true,
   },
+  images: {
+    domains: ["storage.edcilo.com"],
+  },
 };
 
 module.exports = nextConfig;
