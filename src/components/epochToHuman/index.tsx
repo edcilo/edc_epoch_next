@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { Button, Flex, Checkbox, NumberInput, Tooltip } from "@mantine/core";
 import { IconRefresh } from "@tabler/icons-react";
 import { checkboxStyles, inputStyles, useStyles } from "./styles";
@@ -20,10 +20,10 @@ export const EpochToHuman: FC<IEpochToHuman> = ({ epoch }) => {
   const [local, setLocal] = useState<string>("");
   const [inMmilliseconds, setMilliseconds] = useState<boolean>(false);
 
-  const convertToDate = () => {
+  const convertToDate = useCallback(() => {
     const epoch = inMmilliseconds ? value : value * 1000;
     return new Date(epoch);
-  };
+  }, [inMmilliseconds, value]);
 
   useEffect(() => {
     setGmt(
