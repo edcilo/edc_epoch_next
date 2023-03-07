@@ -135,6 +135,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
       <TextInput
         label={<strong>Epoch:</strong>}
         value={newEpoch}
+        styles={inputStyles}
         readOnly
         rightSection={
           <Tooltip
