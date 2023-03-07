@@ -6,7 +6,7 @@ export const useStyles = createStyles((theme: MantineTheme) => ({
     backgroundColor: getColors(theme).primary,
     borderRadius: theme.radius.xs,
     "&:hover": {
-      backgroundColor: getColors(theme).primaryHover,
+      backgroundColor: `${getColors(theme).primaryHover} !important`,
     },
   },
 }));
