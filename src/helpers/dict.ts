@@ -8,7 +8,7 @@ const i18n = rosetta({
       humanToEpoch: "Human to Epoch",
       description:
         "The Unix epoch is the number of seconds that have elapsed since January 1st, 1970 at 00:00:00 UTC. This value is used as a reference point for measuring time in Unix systems.",
-      readMore: "Read more",
+      readMore: "Read more about Unix epoch",
     },
     epochToHuman: {
       gmt: "GMT",
@@ -96,7 +96,7 @@ const i18n = rosetta({
       humanToEpoch: "Fecha a Epoch",
       description:
         "Unix epoch es el número de segundos transcurridos desde el 1 de enero de 1970 a las 00:00:00 UTC. Este valor se utiliza como una forma de referencia para medir el tiempo en sistemas Unix.",
-      readMore: "Leer más",
+      readMore: "Leer más acerca de Unix epoch",
     },
     epochToHuman: {
       gmt: "GMT",
