@@ -66,6 +66,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           max={9999}
           value={date.year}
           onChange={(value) => setDate({ ...date, year: value || date.year })}
+          hideControls
         />
         <NumberInput
           label={i18n("humanToEpoch.month.label", locale)}
@@ -76,6 +77,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           max={12}
           value={date.month}
           onChange={(value) => setDate({ ...date, month: value || date.month })}
+          hideControls
         />
         <NumberInput
           label={i18n("humanToEpoch.day.label", locale)}
@@ -86,6 +88,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           max={31}
           value={date.day}
           onChange={(value) => setDate({ ...date, day: value || date.day })}
+          hideControls
         />
       </Flex>
       <Flex justify="space-between" gap="md" mb="xs">
@@ -100,6 +103,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           onChange={(value) =>
             setDate({ ...date, hour: value >= 0 ? +value : date.hour })
           }
+          hideControls
         />
         <NumberInput
           label={i18n("humanToEpoch.minute.label", locale)}
@@ -112,6 +116,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           onChange={(value) =>
             setDate({ ...date, minute: value >= 0 ? +value : date.minute })
           }
+          hideControls
         />
         <NumberInput
           label={i18n("humanToEpoch.second.label", locale)}
@@ -124,6 +129,7 @@ export const HumanToEpoch: FC<IHumanToEpochProps> = ({ epoch }) => {
           onChange={(value) =>
             setDate({ ...date, second: value >= 0 ? +value : date.second })
           }
+          hideControls
         />
       </Flex>
 
