@@ -1,8 +1,8 @@
-import { Container, Space, Text, Title, Code } from "@mantine/core";
+import { Container, Space, Text, Title } from "@mantine/core";
 import { DefaultLayout } from "@/layouts";
 import { I18n } from "@/components";
 import Link from "next/link";
-import { IconExternalLink, IconArrowLeft } from "@tabler/icons-react";
+import { IconExternalLink } from "@tabler/icons-react";
 import { Prism } from "@mantine/prism";
 
 export default function Epoch() {

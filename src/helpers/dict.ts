@@ -80,6 +80,14 @@ const i18n = rosetta({
       postgres: "Epoch in PostgreSQL",
       go: "Epoch in Go",
     },
+    about: {
+      title: "About",
+      back: "Back",
+      poweredBy: "Powered by",
+      technologies: "Technologies",
+      goTo: "Go to",
+      tools: "Tools",
+    },
   },
   es: {
     home: {
@@ -156,6 +164,14 @@ const i18n = rosetta({
       mysql: "Epoch en MySQL",
       postgres: "Epoch en PostgreSQL",
       go: "Epoch en Go",
+    },
+    about: {
+      title: "Acerca de",
+      back: "Volver",
+      poweredBy: "Desarrollado por",
+      technologies: "Tecnologías",
+      goTo: "Ir",
+      tools: "Herramientas",
     },
   },
 });
