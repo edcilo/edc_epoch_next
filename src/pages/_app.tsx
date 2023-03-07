@@ -10,6 +10,7 @@ import { getCookie, setCookie } from "cookies-next";
 import { GetServerSidePropsContext } from "next";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
+import Script from "next/script";
 
 interface IAppProps extends AppDefaultProps {
   colorScheme: ColorScheme;
@@ -41,6 +42,7 @@ export default function App(props: IAppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
+
       <NextSeo
         title="epoch converter"
         description="epoch converter web application"
@@ -62,6 +64,22 @@ export default function App(props: IAppProps) {
           },
         ]}
       />
+
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+      />
+      <Script strategy="lazyOnload" id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+            page_path: window.location.pathname,
+          });
+        `}
+      </Script>
+
       <ColorSchemeProvider
         colorScheme={colorScheme}
         toggleColorScheme={toggleColorScheme}
